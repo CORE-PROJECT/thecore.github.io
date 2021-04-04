@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>THE CORE PROJECT</title>
+	<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="images/icon.ico" type="image/x-icon">  
+    <!--Author-of-code=Tywary-->
+
+
+	<style type="text/css">
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: relative;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+	</style>
+</head>
+<body>
+	<!--Header-->
+<header class="text-gray-600 body-font">
+  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+      <img src="images/logo.png" style=" width: 100px; height: 60px ">
+      <span class="ml-3 text-xl"></span>
+    </a>
+    <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+      <a href="index.html" class="mr-5 hover:text-gray-900">Home</a>
+      <a href="#about" class="mr-5 hover:text-gray-900">About Us</a>
+      <a href="#mission" class="mr-5 hover:text-gray-900">Our Mission</a>
+      <a href="#team" class="mr-5 hover:text-gray-900">Our Team</a>     
+      <a href="#cont" class="mr-5 hover:text-gray-900">Contact Us</a>
+    </nav>
+    <a href="volunteer.html">
+    <button style="background-color: #002750; color: cyan; " class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-blue-200 rounded text-base mt-4 md:mt-0">Volunteer
+      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5l7 7-7 7"></path>
+      </svg>
+    </button>
+</a>
+  </div>
+</header>
+<!--carousel-->
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext"></div>
+  <img src="images/peace.jpg" style="width:100%">
+  <div class="text"></div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext"></div>
+  <img src="images/peace1.jpg" style="width:100%">
+  <div class="text"></div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext"></div>
+  <img src="images/peace2.jpg" style="width:100%">
+  <div class="text"></div>
+</div>
+
+<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+</div>
+
+<div style="text-align:center;">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+</div>
+<br>
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
+
+<!--slide-show end -->
+<section style="background-color: #002750 ;" id="about" class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-col text-center w-full mb-12">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"> <span style="font-size: 80px; color: #5187bf; "> About Us<br> </span> </h1><br>
+      <p style="color: cyan;" class="lg:w-2/3 mx-auto leading-relaxed text-base">The vision of ‘The CORE’ is to promote disarmament in all its forms in various different levels. While the definition of this word ‘disarmament’ means the reduction or withdrawal of military forces and weapons disarmament is more than this. For this campaign disarmament also means reduction of unnecessary violence. For the members of this campaign, controlled violence is always the last option because this campaign also believes that everything has a limit and we believe in responding but not reacting to any grave situation.<br><br>
+CORE also promotes that disarmament which means disapproval against poaching or any other
+physical or mental harassment or harm. It also defames the use of non-conventional weapons. The idea of disarmament for this campaign stands on the four goals taken from SDGs which act like pillars to our agenda; those Goal no. 4, 8, 11 and 16. To conclude disarmament for the members of the Core is to promote peace everywhere and it also carries to the point that war it is never the immediate solution of
+any problem.</p>
+    </div>
+  </div>
+</section>
+
+<section id="mission"  class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="text-center mb-20">
+      <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4"><span style="font-size: 80px; " >Our Mission</span></h1>
+      <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">We can’t help everyone, but everyone can help someone.<br>So we aim for</p>
+    </div>
+    <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
+      <div class="p-2 sm:w-1/2 w-full">
+        <div class="bg-gray-100 rounded flex p-4 h-full items-center">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+            <path d="M22 4L12 14.01l-3-3"></path>
+          </svg>
+          <span class="title-font font-medium">Global Disarment</span>
+        </div>
+      </div>
+      <div class="p-2 sm:w-1/2 w-full">
+        <div class="bg-gray-100 rounded flex p-4 h-full items-center">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+            <path d="M22 4L12 14.01l-3-3"></path>
+          </svg>
+          <span class="title-font font-medium">Peacefull</span>
+        </div>
+      </div>
+      <div class="p-2 sm:w-1/2 w-full">
+        <div class="bg-gray-100 rounded flex p-4 h-full items-center">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+            <path d="M22 4L12 14.01l-3-3"></path>
+          </svg>
+          <span class="title-font font-medium">War is not the solution</span>
+        </div>
+      </div>
+      <div class="p-2 sm:w-1/2 w-full">
+        <div class="bg-gray-100 rounded flex p-4 h-full items-center">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+            <path d="M22 4L12 14.01l-3-3"></path>
+          </svg>
+          <span class="title-font font-medium">Stoping Poaching</span>
+        </div>
+      </div>
+      <div class="p-2 sm:w-1/2 w-full">
+        <div class="bg-gray-100 rounded flex p-4 h-full items-center">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+            <path d="M22 4L12 14.01l-3-3"></path>
+          </svg>
+          <span class="title-font font-medium">defames the use of non-conventional weapons</span>
+        </div>
+      </div>
+      <div class="p-2 sm:w-1/2 w-full">
+        <div class="bg-gray-100 rounded flex p-4 h-full items-center">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+            <path d="M22 4L12 14.01l-3-3"></path>
+          </svg>
+          <span class="title-font font-medium">reduction of unnecessary violence</span>
+        </div>
+      </div>
+    </div>
+    <a href="volunteer.html">
+    <button class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Volunteer Now</button></a>
+  </div>
+</section>
+<!--Our team-->
+<section style="background-color: #002750;" id="team" class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-col text-center w-full mb-20">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"><span style="font-size: 80px; color: #5187bf; " >Our Team</span></h1>
+      <p style="color: lightblue; " class="lg:w-2/3 mx-auto leading-relaxed text-base">The Passionate team that runs this project wholeheartedly.</p>
+    </div>
+    <div class="flex flex-wrap -m-2">
+      <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+          <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="images/anony.png">
+          <div class="flex-grow">
+            <h2 style="color: cyan;" class="text-gray-900 title-font font-medium">Pranav Kumar</h2>
+            <p class="text-gray-500">Founder</p>
+          </div>
+        </div>
+      </div>
+      <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+          <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="images/anony.png">
+          <div class="flex-grow">
+            <h2 style="color: cyan;" class="text-gray-900 title-font font-medium">Jyotiranjan Moharana</h2>
+            <p class="text-gray-500">Co-Founder</p>
+          </div>
+        </div>
+      </div>
+      <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+          <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="images/anony.png">
+          <div class="flex-grow">
+            <h2 style="color: cyan;" class="text-gray-900 title-font font-medium">Jigyasa Valecha</h2>
+            <p class="text-gray-500">Management Head</p>
+          </div>
+        </div>
+      </div>
+      <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+          <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="images/anony.png">
+          <div class="flex-grow">
+            <h2 style="color: cyan;" class="text-gray-900 title-font font-medium">Jiya Gandhi</h2>
+            <p class="text-gray-500">Research Head</p>
+          </div>
+        </div>
+      </div>
+      <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+          <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="images/anony.png">
+          <div class="flex-grow">
+            <h2 style="color: cyan;" class="text-gray-900 title-font font-medium">Aditya Tiwari</h2>
+            <p class="text-gray-500">IT Head</p>
+          </div>
+        </div>
+      </div>
+      <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+          <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="images/anony.png">
+          <div class="flex-grow">
+            <h2 style="color: cyan;" class="text-gray-900 title-font font-medium">Aniruddh Kumar</h2>
+            <p class="text-gray-500">Digital Creations Head</p>
+          </div>
+        </div>
+      </div>
+      <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+          <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="images/anony.png">
+          <div class="flex-grow">
+            <h2 style="color: cyan;" class="text-gray-900 title-font font-medium">Jahanvi Debnath</h2>
+            <p class="text-gray-500">Social Media Head</p>
+          </div>
+        </div>
+      </div>
+      <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+          <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="images/anony.png">
+          <div class="flex-grow">
+            <h2 style="color: cyan;" class="text-gray-900 title-font font-medium">Sahana Chakroborty</h2>
+            <p class="text-gray-500">HR Head </p>
+          </div>
+        </div>
+      </div>
+      <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+          <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="images/anony.png">
+          <div class="flex-grow">
+            <h2 style="color: cyan;" class="text-gray-900 title-font font-medium">Rayyan Rassool Mir</h2>
+            <p class="text-gray-500">Creative Head</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--contatc us-->
+<section id="cont" class="text-gray-600 body-font relative">
+  <div class="absolute inset-0 bg-gray-300">
+    <iframe width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" title="map" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9911.959751308192!2d77.23513533568939!3d28.557539384018664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4aec68b09d6a7cb6!2sTagore%20International%20School!5e0!3m2!1sen!2sin!4v1616564682192!5m2!1sen!2sin" style="filter: grayscale(0) contrast(1.2) opacity(0.4);"></iframe>
+  </div>
+  <div class="container px-5 py-24 mx-auto flex">
+    <div class="lg:w-1/3 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md">
+      <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">Contact Us</h2>
+      <p class="leading-relaxed mb-5 text-gray-600">Have Doubts, Why not contact us</p>
+            <div class="relative mb-4">
+        <label for="email" class="leading-7 text-sm text-gray-600">Name<span style="color: red;">*</span></label>
+        <input type="name" id="name" name="name" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+      </div>
+      <div class="relative mb-4">
+        <label for="email" class="leading-7 text-sm text-gray-600">Email<span style="color: red;">*</span></label>
+        <input type="email" id="email" name="email" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+      </div>
+      <div class="relative mb-4">
+        <label for="message" class="leading-7 text-sm text-gray-600">Message<span style="color: red;">*</span></label>
+        <textarea id="message" name="message" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+      </div>
+      <button class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
+      <p class="text-xs text-gray-500 mt-3">fields required are marked with <span style="color: red;">*</span></p>
+    </div>
+  </div>
+</section>
+<!-- footer Start -->
+<footer class="text-gray-600 body-font">
+  <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+    <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+      <img style="width: 100px; height: 60px; " src="images/logo.png">
+      <span class="ml-3 text-xl">CORE PROJECT</span>
+    </a>
+    <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">&copy; 2021 CORE PROJECT
+    </p>
+    <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+      <a href="" class="text-gray-500">
+        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+          <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+        </svg>
+      </a>
+      <a href="https://bit.ly/youtubecore" class="ml-3 text-gray-500">
+        <img src="images/youtube.png" style="width: 20px;height: 22px;">
+      </a>
+      <a href="https://bit.ly/coreinsta" class="ml-3 text-gray-500">
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+          <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+        </svg>
+      </a>
+   <!--   <a class="ml-3 text-gray-500">
+        <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+          <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+          <circle cx="4" cy="4" r="2" stroke="none"></circle>
+        </svg>
+      </a> -->
+    </span>
+  </div>
+</footer>
+</body>
+</html>
